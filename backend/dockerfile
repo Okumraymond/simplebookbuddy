@@ -1,0 +1,7 @@
+FROM node:18
+WORKDIR /app
+COPY . .
+RUN npm install express pg cors
+EXPOSE 5000
+CMD ["node", "index.js"]
+
