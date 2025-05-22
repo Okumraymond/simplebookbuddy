@@ -1,7 +1,22 @@
+# Use official Node image
 FROM node:18
+
+# Set working directory
 WORKDIR /app
-COPY . .
+
+# Copy package.json and install dependencies
+COPY package*.json ./
 RUN npm install -g create-react-app && npm install
+
+# Copy the rest of the app
+COPY . .
+
+# Set environment variable so React binds to 0.0.0.0
+ENV HOST=0.0.0.0
+
+# Expose port
 EXPOSE 3000
+
+# Start app
 CMD ["npm", "start"]
 
